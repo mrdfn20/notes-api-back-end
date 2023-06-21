@@ -100,7 +100,7 @@ class NotesHandler {
 
       const { id } = request.params;
 
-      await this._service.putNoteById(id, request.payload);
+      await this._service.editNoteById(id, request.payload);
 
       return {
         status: 'success',
