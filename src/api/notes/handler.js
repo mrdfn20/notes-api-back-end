@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-underscore-dangle */
 const ClientError = require('../../exceptions/ClientError');
@@ -161,6 +162,15 @@ class NotesHandler {
         response.code(error.statusCode);
         return response;
       }
+
+      // Server ERROR!
+      const response = h.response({
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
+      });
+      response.code(500);
+      console.error(error);
+      return response;
     }
   }
 }
